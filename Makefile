@@ -4,8 +4,8 @@ resume:
 	pdflatex -interaction batchmode resume.tex
 
 tidy:
-	rm *.log *.aux
+	rm -f *.log *.aux
 
 clean:
 	make tidy
-	rm *.pdf
+	rm -f *.pdf
