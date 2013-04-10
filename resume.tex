@@ -21,15 +21,15 @@
 \newcommand{\boxwidth}{0.97\textwidth}
 
 \newenvironment{packed_itemize}{
-	\setlength{\itemsep}{0pt}
-	\setlength{\parskip}{0pt}
-	\setlength{\parsep}{0pt}
-	\begin{small}
-	\vspace{-0.6em}
-	\begin{itemize}[label=$\circ$]
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    \begin{small}
+    \vspace{-0.6em}
+    \begin{itemize}[label=$\circ$]
 }{
-	\end{itemize}
-	\end{small}
+    \end{itemize}
+    \end{small}
 }
 
 
@@ -37,29 +37,29 @@
 \definecolor{border}{rgb}{.7,.7,1}
 \newcommand{\resitem}[1]{
     \large{
-	\fcolorbox{border}{bg}{
-	    \parbox{\boxwidth}{
-		\textbf{#1 \vphantom{p\^{E}}}
-	    }
-	}
+    \fcolorbox{border}{bg}{
+        \parbox{\boxwidth}{
+        \textbf{#1 \vphantom{p\^{E}}}
+        }
+    }
     }
 }
 
 \definecolor{subbg}{gray}{.92}
 \newcommand{\ressub}[4]{
 \begin{small}
-	\fcolorbox{subbg}{subbg}{
-	    	\parbox{\boxwidth}{
-				\textbf{#1} \hfill #2\\
-				\textit{#3} \hfill \textit{#4}
-		}
-	}
+    \fcolorbox{subbg}{subbg}{
+            \parbox{\boxwidth}{
+                \textbf{#1} \hfill #2\\
+                \textit{#3} \hfill \textit{#4}
+        }
+    }
 \end{small}
 }
 
 \newcommand{\reshead}[5]{
     \textbf{\Large #1} \hfill {\small #2}\\
-	\vspace{1em}
+    \vspace{1em}
 }
 
 %-----------------------
@@ -72,16 +72,16 @@
 
     \ressub{University of Chicago}{Chicago, IL}{BS in Computer Science and BS in Mathematics \textup{GPA 3.5}}{Expected June 2013}
     \begin{packed_itemize}
-	\item Computer Science Courses: Reading \& Research, Advanced Distributed Systems, Networks and Distributed Systems,
+    \item Computer Science Courses: Reading \& Research, Advanced Distributed Systems, Networks and Distributed Systems,
           Operating Systems, Functional Programming, Honors Introduction to Computer Science, Computational Linguistics,
           Databases, Topics in Operating Systems
-	\item Mathematics Courses: Algebraic Number Theory, Algebra, Theory of Algorithms, Formal Languages, Discrete Mathematics,
+    \item Mathematics Courses: Algebraic Number Theory, Algebra, Theory of Algorithms, Formal Languages, Discrete Mathematics,
           Graph Theory, Analysis in $\mathbb{R}^n$, Honors Calculus
     \end{packed_itemize}
     
     \ressub{Columbia University}{New York, NY}{Visiting Student \textup{GPA 4.0}}{Summer 2009}
     \begin{packed_itemize}
-	\item Computer Science Courses: Artificial Intelligence
+    \item Computer Science Courses: Artificial Intelligence
     \end{packed_itemize}
 
 
@@ -90,7 +90,7 @@
 
     \ressub{Data-Only Flattening for Nested Data Parallelism}{Manticore Project, University of Chicago}{L. Bergstrom, J. Reppy, S. Rosen, A. Shaw, M. Rainey, M. Fluet}{PPoPP 2013}
     \begin{packed_itemize}
-	\item Generalized parallel segmented sums into segmented reductions, optimized segmented reduce
+    \item Generalized parallel segmented sums into segmented reductions, optimized segmented reduce
     \end{packed_itemize}
 
     \ressub{Status Report: The Manticore Project (2012)}{Manticore Project, University of Chicago}{C. Berger, L. Bergstrom, J. Reppy, S. Rosen, N. Sandler, A. Shaw, M. Rainey, M. Fluet}{}
@@ -101,36 +101,36 @@
 
     \ressub{Manticore Project}{John Reppy, University of Chicago}{Contributor}{June 2011 -- Present}
     \begin{packed_itemize}
-	\item Adapted thread scheduling to prioritize non-IO bound computations
-	\item Expanding flattening transformation to arbitrarily nested arrays and tuples, porting flattening to a later phase of compilation
+    \item Adapted thread scheduling to prioritize non-IO bound computations
+    \item Expanding flattening transformation to arbitrarily nested arrays and tuples, porting flattening to a later phase of compilation
     \end{packed_itemize}
     
     \ressub{Computer Science Instructional Laboratories}{University of Chicago}{System Administrator}{May 2010 -- Present}
     \begin{packed_itemize}
-	\item Administer Mac OS X servers, Ubuntu servers, and Mac OS X workstations
-	\item Modify and use tools including radmind, Nagios, Fabric, Parallels, and VMWare
+    \item Administer Mac OS X servers, Ubuntu servers, and Mac OS X workstations
+    \item Modify and use tools including radmind, Nagios, Fabric, Parallels, and VMWare
     \end{packed_itemize}
 
     \ressub{Computer Science Department}{University of Chicago}{TA, Grader}{January 2012 -- March 2013}
     \begin{packed_itemize}
-	\item Courses: Networks and Distributed Systems (January 2012 -- March 2012, April 2013 -- June 2013), Computer Science with Applications I (October 2012 -- December 2012), Honors Introduction to Computer Science II (January 2013 -- March 2013)
+    \item Courses: Networks and Distributed Systems (January 2012 -- March 2012, April 2013 -- June 2013), Computer Science with Applications I (October 2012 -- December 2012), Honors Introduction to Computer Science II (January 2013 -- March 2013)
     \end{packed_itemize}
 
 
 \resitem{Relevant Skills \& Experience}
 \small{
     \begin{packed_itemize}
-	\item{\bf Programing \& Scripting Languages}
-	\begin{itemize}
-	    \item Proficient: Python, C, SML, Parallel ML (Manticore experimental language), Java, Bash, awk, Haskell, flex/bison, make
-	    \item Familiar: Ruby, LISP, AppleScript, x86 Assembly, SQL, R, Go, C++, Lua, PHP, JavaScript, MATLAB
-	\end{itemize}
+    \item{\bf Programing \& Scripting Languages}
+    \begin{itemize}
+        \item Proficient: Python, C, SML, Parallel ML (Manticore experimental language), Java, Bash, awk, Haskell, flex/bison, make
+        \item Familiar: Ruby, LISP, AppleScript, x86 Assembly, SQL, R, Go, C++, Lua, PHP, JavaScript, MATLAB
+    \end{itemize}
 
     \item {\bf Open Source Work}: GitHub (www.github.com/sirosen), Manticore (manticore.cs.uchicago.edu, follow install instructions for svn repository)
-	
-	\item {\bf Applications \& Computer Tools}: \LaTeX, vim, git, svn, emacs
+    
+    \item {\bf Applications \& Computer Tools}: \LaTeX, vim, git, svn, emacs
 
-	\item {\bf System Administration}: Mac OS X, Ubuntu, Some experience with other Linux distributions
+    \item {\bf System Administration}: Mac OS X, Ubuntu, Some experience with other Linux distributions
 
     \end{packed_itemize}
 }
