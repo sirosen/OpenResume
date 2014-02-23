@@ -6,6 +6,7 @@
 \documentclass[letterpaper,11pt]{article}
 \usepackage{latexsym,amssymb}
 \usepackage{xcolor,enumitem}
+\usepackage[hidelinks]{hyperref}
 
 %-----------------------
 \pagestyle{empty}
@@ -57,8 +58,8 @@
 \end{small}
 }
 
-\newcommand{\reshead}[2]{
-    \textbf{\Large #1} \hfill {\small #2}\\
+\newcommand{\reshead}[3]{
+    \textbf{\Large #1} \hfill \url{#2} \hfill {\small #3}\\
     \vspace{1em}
 }
 
@@ -66,7 +67,7 @@
 
 \begin{document}
 
-\reshead{Stephen Rosen}{sirosen@uchicago.edu}
+\reshead{Stephen Rosen}{http://sirosen.github.io/}{sirosen@uchicago.edu}
 
 \resitem{Education}
 
@@ -93,7 +94,7 @@
     \begin{packed_itemize}
     \item Used and developed Chef cookbooks to maintain servers backing the Globus service
     \item Managed the coordinated deployment of code from multiple development teams onto QA and production servers
-    \item Spearheaded efforts to refine the build and deployment processes using Git, Jenkins CI, and AWS
+    \item Refined the build and deployment processes using Git, Jenkins CI, AWS S3, and AWS EC2
     \end{packed_itemize}
 
     \ressub{Manticore Project}{John Reppy, University of Chicago}{Contributor}{June 2011 -- June 2013}
@@ -106,7 +107,7 @@
     \begin{packed_itemize}
     \item Administered Mac OS X servers, Ubuntu servers, VMWare ESXi servers, and Mac OS X workstations
     \item Modified and used tools including radmind, Nagios, Fabric, Parallels, and VMWare
-    \item Designed and implemented a centralized administration and configuration managment service on top of Fabric
+    \item Designed and implemented a centralized administration and configuration managment service
     \end{packed_itemize}
 
     \ressub{Computer Science Department}{University of Chicago}{TA, Grader}{January 2012 -- June 2013}
@@ -121,11 +122,11 @@
     \item {\bf Programing \& Scripting Languages}: Python, C, SML, Bash, SQL, Ruby, Java, awk, make, flex/bison,
           AppleScript, x86 Assembly, C++, LISP, Haskell, Go, R, Lua, PHP, JavaScript, MATLAB, XSLT
 
-    \item {\bf Data Serialization, Templating, \& Storage Languages}: JSON, XML, jinja, mustache, ERB
+    \item {\bf Data Serialization, Templating, \& Storage Languages}: JSON, XML, jinja, mustache, ERB, CSS, Liquid
 
     \item {\bf Open Source Work}: SALVE (www.github.com/sirosen/SALVE), Manticore (manticore.cs.uchicago.edu)
 
-    \item {\bf Tools}: \LaTeX, vim, SSH, git, svn, AWS, cron, nginx, Chef, Jenkins, nagios
+    \item {\bf Tools}: \LaTeX, vim, SSH, git, svn, AWS CLI, cron, logrotate, nginx, Chef, Jenkins, nagios
 
     \item {\bf System Administration Platforms \& Operating Systems}: AWS, Mac OS X, Ubuntu, Debian, CentOS, RedHat, VMWare (ESXi)
 
