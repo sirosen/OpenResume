@@ -1,10 +1,12 @@
+.PHONY: all tidy clean
+
 all: resume tidy
 
-resume:
+resume: resume.tex
 	pdflatex -interaction batchmode resume.tex
 
 tidy:
-	rm -f *.log *.aux
+	rm -f *.log *.aux *.out
 
 clean:
 	make tidy
