@@ -12,21 +12,19 @@
 \pagestyle{empty}
 \usepackage[margin=0.5in]{geometry}
 
-\raggedright
+\raggedleft
+\lefthyphenmin=10
 %-----------------------
 
 %-----------------------
 
 %Command definitions
 
-\newcommand{\boxwidth}{0.97\textwidth}
-
 \newenvironment{packed_itemize}{
+    \begin{small}
     \setlength{\itemsep}{0pt}
     \setlength{\parskip}{0pt}
     \setlength{\parsep}{0pt}
-    \vspace{-0.4em}
-    \begin{small}
     \begin{itemize}[label=$\circ$]
 }{
     \end{itemize}
@@ -39,7 +37,7 @@
 \newcommand{\resitem}[1]{
     \large{
     \fcolorbox{border}{bg}{
-        \parbox{\boxwidth}{
+        \parbox{\textwidth}{
         \textbf{#1 \vphantom{p\^{E}}}
         }
     }
@@ -50,16 +48,30 @@
 \newcommand{\ressub}[4]{
 \begin{small}
     \fcolorbox{subbg}{subbg}{
-            \parbox{\boxwidth}{
-                \textbf{#1} \hfill #2\\
-                \textit{#3} \hfill \textit{#4}
+        \parbox{\textwidth}{
+            \textbf{#1}\\
+            #2\\
+            \textit{#3}\\
+            #4
         }
     }
 \end{small}
+\vspace{-0.4em}
+}
+
+\newcommand{\rawressub}[1]{
+\begin{small}
+    \fcolorbox{subbg}{subbg}{
+        \parbox{\textwidth}{
+            #1
+        }
+    }
+\end{small}
+\vspace{-0.4em}
 }
 
 \newcommand{\reshead}[3]{
-    \textbf{\Large #1} \hfill \url{#2} \hfill {\small #3}\\
+    \textbf{\Large #1} \hfill \url{#2} \hfill #3\\
     \vspace{1em}
 }
 
@@ -69,12 +81,95 @@
 
 \reshead{Stephen Rosen}{http://sirosen.net/}{sirosen@uchicago.edu}
 
+
+% Left side
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+
+\resitem{Work Experience}
+
+    \ressub{Globus}{SaaS Backend Engineer}{Computation Institute, University of Chicago; Argonne National Lab}{July 2013 -- Present}
+    \begin{packed_itemize}
+    \item Developed Chef cookbooks, bash scripts, and python scripts to
+        maintain Globus servers
+    \item Managed the deployment of code from multiple teams onto QA and
+        production servers, including Build and Release Engineering and
+        Workflow Automation
+    \end{packed_itemize}
+
+    \ressub{Manticore Project}{Contributor}{John Reppy, University of Chicago}{June 2011 -- June 2013}
+    \begin{packed_itemize}
+    \item Adapted thread scheduling to prioritize non-IO bound computations
+    \item Developed a target for full or partial flattening on arbitrarily nested arrays and tuples as a Nested Flat Array
+    \end{packed_itemize}
+
+    \ressub{Computer Science Instructional Laboratories}{System Administrator}{University of Chicago}{May 2010 -- June 2013}
+    \begin{packed_itemize}
+    \item Administered Mac OS X servers, Ubuntu servers, VMWare ESXi servers, and Mac OS X workstations
+    \item Modified and used tools including radmind, Nagios, Fabric, Parallels, and VMWare
+    \item Designed and implemented a centralized administration and configuration managment service
+    \end{packed_itemize}
+
+    \ressub{Computer Science Department}{TA, Grader}{University of Chicago}{January 2012 -- June 2013}
+    \begin{packed_itemize}
+    \item Networks and Distributed Systems (Winter 2012, Spring 2013), Computer Science with Applications I (Autumn 2012), Honors Introduction to Computer Science II (Winter 2013)
+    \end{packed_itemize}
+
+\end{minipage}
+\hfill % Right hand side
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+
+
+\resitem{Skills \& Experience}
+
+    \rawressub{\textbf{Open Source Work}}
+
+    \begin{small}
+    SALVE\hfill\url{salve.sirosen.net}\\
+    Manticore\hfill\url{manticore.cs.uchicago.edu}
+    \vspace{0.5em}
+    \end{small}
+
+    \rawressub{\textbf{Programing \& Scripting Languages}}
+
+    \begin{small}
+    Python, C, SML, Bash, SQL, Ruby, Java, awk, (GNU) make,
+    JavaScript (\& jQuery), flex/bison, AppleScript, x86 Assembly, C++, LISP,
+    Haskell, Go, R, Lua, PHP, XSLT
+    \vspace{0.5em}
+    \end{small}
+
+    \rawressub{\textbf{Data Serialization \& Templating Languages}}
+
+    \begin{small}
+    JSON, XML, mustache, ERB, CSS, Liquid, jinja
+    \vspace{0.5em}
+    \end{small}
+
+    \rawressub{\textbf{Tools \& Software}}
+
+    \begin{small}
+    nginx, Chef, Jenkins, Travis CI, nagios, OSSEC, Vagrant, JIRA,
+    Sentry (getsentry.com), Elasticsearch, Postgres
+    \vspace{0.5em}
+    \end{small}
+
+    \rawressub{\textbf{Platforms \& Operating Systems}}
+
+    \begin{small}
+    AWS, Mac OS X, Ubuntu, Debian, CentOS, RedHat, VMWare (ESXi), SUSE
+    \vspace{0.5em}
+    \end{small}
+
+
 \resitem{Education}
 
-    \ressub{University of Chicago}{Chicago, IL}{BS in Computer Science and BS in Mathematics \textup{GPA 3.5}}{June 2013}
+    \ressub{University of Chicago}{BS in Computer Science and BS in Mathematics}{\textup{GPA 3.5}}{June 2013}
     \begin{packed_itemize}
-    \item Notable Courses: Topics in Operating Systems, Advanced Distributed Systems, Formal Languages, Algebraic Number Theory
+        \item Notable Courses: Topics in Operating Systems, Advanced Distributed Systems, Formal Languages, Algebraic Number Theory
     \end{packed_itemize}
+
 
 \resitem{Publications}
 
@@ -85,53 +180,7 @@
 
     \ressub{Status Report: The Manticore Project (2012)}{Manticore Project, University of Chicago}{C. Berger, L. Bergstrom, J. Reppy, S. Rosen, N. Sandler, A. Shaw, M. Rainey, M. Fluet}{}
 
+\end{minipage}
 
-\resitem{Work Experience}
-
-    \ressub{Globus}{Computation Institute, University of Chicago; Argonne National Lab}{SaaS Backend Engineer}{July 2013 -- Present}
-    \begin{packed_itemize}
-    \item Developed Chef cookbooks to maintain servers backing the Globus service
-    \item Managed the deployment of code from multiple development teams onto
-        QA and production servers, including Build and Release Engineering
-    \item Refined build and deployment processes using Git, Jenkins CI, AWS S3, and AWS EC2
-    \end{packed_itemize}
-
-    \ressub{Manticore Project}{John Reppy, University of Chicago}{Contributor}{June 2011 -- June 2013}
-    \begin{packed_itemize}
-    \item Adapted thread scheduling to prioritize non-IO bound computations
-    \item Developed a target for full or partial flattening on arbitrarily nested arrays and tuples as a Nested Flat Array
-    \end{packed_itemize}
-
-    \ressub{Computer Science Instructional Laboratories}{University of Chicago}{System Administrator}{May 2010 -- June 2013}
-    \begin{packed_itemize}
-    \item Administered Mac OS X servers, Ubuntu servers, VMWare ESXi servers, and Mac OS X workstations
-    \item Modified and used tools including radmind, Nagios, Fabric, Parallels, and VMWare
-    \item Designed and implemented a centralized administration and configuration managment service
-    \end{packed_itemize}
-
-    \ressub{Computer Science Department}{University of Chicago}{TA, Grader}{January 2012 -- June 2013}
-    \begin{packed_itemize}
-    \item Networks and Distributed Systems (Winter 2012, Spring 2013), Computer Science with Applications I (Autumn 2012), Honors Introduction to Computer Science II (Winter 2013)
-    \end{packed_itemize}
-
-
-\resitem{Skills \& Experience}
-\small{
-    \begin{packed_itemize}
-    \item {\bf Programing \& Scripting Languages}: Python, C, SML, Bash, SQL, Ruby,
-            Java, awk, (GNU) make, JavaScript (\& jQuery), flex/bison, AppleScript,
-            x86 Assembly, C++, LISP, Haskell, Go, R, Lua, PHP, XSLT
-
-    \item {\bf Data Serialization, Templating, \& Storage Languages}: JSON,
-            XML, mustache, ERB, CSS, Liquid, jinja
-
-    \item {\bf Open Source Work}: SALVE (http://salve.sirosen.net/), Manticore (manticore.cs.uchicago.edu)
-
-    \item {\bf Tools \& Software}: nginx, Chef, Jenkins, Travis CI, nagios, OSSEC, Vagrant, JIRA, Sentry (getsentry.com)
-
-    \item {\bf System Administration Platforms \& Operating Systems}: AWS,
-        Mac OS X, Ubuntu, Debian, CentOS, RedHat, VMWare (ESXi), SUSE
-
-    \end{packed_itemize} }
 
 \end{document}
