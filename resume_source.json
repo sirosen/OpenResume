@@ -1,0 +1,198 @@
+{
+  "heading": {
+    "name": "Stephen Rosen",
+    "web": "http://sirosen.net",
+    "email": "sirosen@uchicago.edu"
+  },
+  "ordered_sections": [
+    "workexp",
+    "<columnbreak>",
+    "skills",
+    "edu",
+    "pub"
+  ],
+  "sections": {
+    "workexp": {
+      "title": "Work Experience",
+      "ordered_sub": [
+        "globus",
+        "manticore",
+        "csil",
+        "ta"
+      ],
+      "subsections": {
+        "globus": {
+          "style": "experience",
+          "title": "Globus",
+          "role": "SaaS Backend Engineer",
+          "where": "Computation Institute, University of Chicago; Argonne National Lab",
+          "when": "July 2013 -- Present",
+          "items": [
+            "Developed Chef cookbooks, bash scripts, and python scripts to maintain Globus servers",
+            "Managed the deployment of code from multiple teams onto QA and production servers, including Build and Release Engineering and Workflow Automation"
+          ]
+        },
+        "manticore": {
+          "style": "experience",
+          "title": "Manticore Project",
+          "role": "Contributor",
+          "where": "John Reppy, University of Chicago",
+          "when": "June 2011 -- June 2013",
+          "items": [
+            "Adapted thread scheduling to prioritize non-IO bound computations",
+            "Developed a target for full or partial flattening on arbitrarily nested arrays and tuples as a Nested Flat Array"
+          ]
+        },
+        "csil": {
+          "style": "experience",
+          "title": "Computer Science Instructional Laboratories",
+          "role": "System Administrator",
+          "where": "University of Chicago",
+          "when": "May 2010 -- June 2013",
+          "items": [
+            "Administered Mac OS X servers, Ubuntu servers, VMWare ESXi servers, and Mac OS X workstations",
+            "Modified and used tools including radmind, Nagios, Fabric, Parallels, and VMWare",
+            "Designed and implemented a centralized administration and configuration managment service"
+          ]
+        },
+        "ta": {
+          "style": "experience",
+          "title": "Computer Science Department",
+          "role": "TA, Grader",
+          "where": "University of Chicago",
+          "when": "January 2012 -- June 2013",
+          "items": [
+            "Networks and Distributed Systems (Winter 2012, Spring 2013), Computer Science with Applications I (Autumn 2012), Honors Introduction to Computer Science II (Winter 2013)"
+          ]
+        }
+      }
+    },
+    "skills": {
+      "title": "Skills & Experience",
+      "ordered_sub": [
+        "opensource",
+        "lang",
+        "templating",
+        "tools",
+        "os"
+      ],
+      "subsections": {
+        "opensource": {
+          "style": "flatheading",
+          "itemstyle": "2col",
+          "title": "Open Source Work",
+          "tex": {
+            "itemstyles": ["col2url"]
+          },
+          "items": [
+            {
+              "col1": "SALVE",
+              "col2": "salve.sirosen.net"
+            },
+            {
+              "col1": "Manticore",
+              "col2": "manticore.cs.uchicago.edu"
+            }
+          ]
+        },
+        "lang": {
+          "style": "flatheading",
+          "itemstyle": "commasep",
+          "title": "Programming & Scripting Languages & Formats",
+          "items": [
+            "Python", "C", "SML", "Bash", "SQL", "Ruby", "Java",
+            "awk", "(GNU) make", "ooc", "JavaScript (& jQuery)",
+            "flex/bison", "AppleScript", "x86 Assembly", "C++",
+            "LISP", "Haskell", "Go", "R", "Lua", "PHP", "XSLT",
+            "JSON", "XML", "mustache", "ERB", "CSS", "Liquid",
+            "jinja"
+          ]
+        },
+        "tools": {
+          "style": "flatheading",
+          "itemstyle": "commasep",
+          "title": "Tools & Software",
+          "items": [
+            "nginx", "Chef", "Jenkins", "Travis CI", "nagios",
+            "OSSEC", "Vagrant", "JIRA", "Sentry (getsentry.com)",
+            "Elasticsearch", "Postgres", "rsyslog"
+          ]
+        },
+        "os": {
+          "style": "flatheading",
+          "itemstyle": "commasep",
+          "title": "Platforms & Operating Systems",
+          "items": [
+            "AWS", "Mac OS X", "Ubuntu", "Debian", "CentOS",
+            "RedHat", "VMWare (ESXi)", "SUSE", "ArchLinux"
+          ]
+        }
+      }
+    },
+    "edu": {
+      "title": "Education",
+      "ordered_sub": [
+        "BS"
+      ],
+      "subsections": {
+        "BS": {
+          "style": "degree",
+          "itemstyle": "courses",
+          "title": "University of Chicago",
+          "role": "BS in Computer Science and BS in Mathematics",
+          "gpa": "GPA 3.5",
+          "when": "June 2013",
+          "items": [
+            "Topics in Operating Systems",
+            "Advanced Distributed Systems",
+            "Formal Languages",
+            "Algebraic Number Theory"
+          ]
+        }
+      }
+    },
+    "pub": {
+      "title": "Publications",
+      "ordered_sub": [
+        "flatten",
+        "status"
+      ],
+      "subsections": {
+        "flatten": {
+          "style": "publication",
+          "title": "Data-Only Flattening for Nested Data Parallelism",
+          "where": "Manticore Project, University of Chicago",
+          "authors": [
+            "L. Bergstrom",
+            "J. Reppy",
+            "S. Rosen",
+            "A. Shaw",
+            "M. Rainey",
+            "M. Fluet"
+          ],
+          "pub_in": "PPoPP 2013",
+          "when": "June 2013",
+          "items": [
+            "Generalized parallel segmented sums into segmented reductions, optimized segmented reduce"
+          ]
+        },
+        "status": {
+          "style": "publication",
+          "title": "Status Report: The Manticore Project (2012)",
+          "where": "Manticore Project, University of Chicago",
+          "authors": [
+            "C. Berger",
+            "L. Bergstrom",
+            "J. Reppy",
+            "S. Rosen",
+            "N. Sandler",
+            "A. Shaw",
+            "M. Rainey",
+            "M. Fluet"
+          ],
+          "when": "June 2013"
+        }
+      }
+    }
+  }
+}
