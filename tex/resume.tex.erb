@@ -1,0 +1,157 @@
+%-----------------------%
+% Resume                %
+% Author: Stephen Rosen %
+%-----------------------%
+
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym,amssymb}
+\usepackage{xcolor,enumitem}
+\usepackage[hidelinks]{hyperref}
+
+%-----------------------
+\pagestyle{empty}
+\usepackage[margin=0.5in]{geometry}
+
+\raggedright
+\lefthyphenmin=10
+%-----------------------
+
+%-----------------------
+
+%Command definitions
+
+\newenvironment{packed_itemize}{
+    \begin{small}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    \begin{itemize}[label=$\circ$]
+}{
+    \end{itemize}
+    \end{small}
+}
+
+
+\definecolor{bg}{rgb}{.9,.9,1}
+\definecolor{border}{rgb}{.7,.7,1}
+\newcommand{\resitem}[1]{
+    \large{
+    \fcolorbox{border}{bg}{
+        \parbox{\textwidth}{
+        \textbf{#1 \vphantom{p\^{E}}}
+        }
+    }
+    }
+}
+
+\definecolor{subbg}{gray}{.95}
+\newcommand{\ressub}[4]{
+\begin{small}
+    \fcolorbox{subbg}{subbg}{
+        \parbox{\textwidth}{
+            \textbf{#1}\\
+            #2\\
+            \textit{#3}\\
+            #4
+        }
+    }
+\end{small}
+\vspace{-0.4em}
+}
+
+\newcommand{\rawressub}[1]{
+\begin{small}
+    \fcolorbox{subbg}{subbg}{
+        \parbox{\textwidth}{
+            #1
+        }
+    }
+\end{small}
+\vspace{-0.4em}
+}
+
+\newcommand{\reshead}[3]{
+    \textbf{\Large #1} \hfill \url{#2} \hfill #3\\
+    \vspace{1em}
+}
+
+%-----------------------
+
+\begin{document}
+
+\reshead{<%= heading['name'] %>}{<%= heading['web'] %>}{<%= heading['email'] %>}
+
+<%  if twocolumn -%>
+% Left side
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+<%  end -%>
+
+<%  items.each do |item| -%>
+<%      if twocolumn and item['is_columnbreak'] -%>
+\end{minipage}
+\hfill % Right hand side
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+<%      else -%>
+
+    \resitem{<%= item['title'] %>}
+
+<%          item['sub'].each do |subitem| -%>
+
+<%              if subitem['style'] == 'flatheading' -%>
+        \rawressub{\textbf{<%= subitem['title'] %>}}
+<%              elsif subitem['style'] == 'experience' -%>
+        \ressub
+          {<%= subitem['title'] %>}
+          {<%= subitem['role'] %>}
+          {<%= subitem['where'] %>}
+          {<%= subitem['when'] %>}
+<%              elsif subitem['style'] == 'degree' -%>
+        \ressub
+          {<%= subitem['title'] %>}
+          {<%= subitem['description'] %>}
+          {\textup{<%= subitem['gpa'] %>}}
+          {<%= subitem['when'] %>}
+<%              elsif subitem['style'] == 'publication' -%>
+        \ressub
+          {<%= subitem['title'] %>}
+          {<%= subitem['where'] %>}
+          {<%= subitem['authors'].join(', ') %>}
+          {<%= subitem['pub_in'] %>}
+<%              end -%>
+
+<%              if subitem['itemstyle'] == 'list' and subitem['items'] -%>
+        \begin{packed_itemize}
+<%                  subitem['items'].each do |bullet_point| -%>
+          \item <%= bullet_point %>
+<%                   end -%>
+        \end{packed_itemize}
+<%              else -%>
+      \begin{small}
+<%                  if subitem['itemstyle'] == 'courses' -%>
+        Notable Courses: <%= subitem['items'].join(', ') %>
+<%                  elsif subitem['itemstyle'] == 'two_col' -%>
+<%                      subitem['items'][0...-1].each do |twocol_item| -%>
+        <%= twocol_item['col1'] %>\hfill<%= twocol_item['col2'] %>\\
+<%                      end -%>
+        <%= subitem['items'][-1]['col1'] %>\hfill<%= subitem['items'][-1]['col2'] %>
+<%                  elsif subitem['itemstyle'] == 'commasep' -%>
+        <%= subitem['items'].join(', ') %>
+<%                  end -%>
+      \vspace{0.5em}
+      \end{small}
+<%              end -%>
+
+<%          end -%>
+
+<%      end -%>
+
+<%  end -%>
+
+<%  if twocolumn -%>
+\end{minipage}
+<%  end -%>
+
+
+\end{document}

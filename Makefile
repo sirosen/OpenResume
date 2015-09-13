@@ -1,17 +1,9 @@
-.PHONY: all tidy clean
+.PHONY: clean
 
-all: convert tidy
-
-resume: resume.tex
-	pdflatex -interaction batchmode resume.tex
-
-convert: resume
-	convert -alpha off -density 600 resume.pdf -quality 90 resume.png
-
-tidy:
-	rm -f *.log *.aux *.out
+all: tex/resume.tex.erb resume_source.json
+	ruby src/main.rb --source resume_source.json \
+		--tex tex/resume.tex --tex-template tex/resume.tex.erb \
+		--pdf tex/resume.pdf --png tex/resume.png
 
 clean:
-	make tidy
-	rm -f *.pdf
-	rm -f *.png
+	rm -f tex/resume.tex
