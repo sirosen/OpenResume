@@ -137,7 +137,7 @@
 <%                      end -%>
         <%= subitem['items'][-1]['col1'] %>\hfill<%= subitem['items'][-1]['col2'] %>
 <%                  elsif subitem['itemstyle'] == 'commasep' -%>
-        <%= subitem['items'].join(', ') %>
+        <%= subitem['items'].join("#{subitem['separator']} " || ', ') %>
 <%                  end -%>
       \vspace{0.5em}
       \end{small}

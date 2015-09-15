@@ -1,24 +1,35 @@
 require 'json'
 require 'erb'
 
+require_relative 'json_tools'
+
 def texify_ampersands obj
-  if obj.is_a? String
-    return obj.gsub('&','\\\\&')
-  elsif obj.is_a? Array
-    return obj.collect{ |elem| texify_ampersands elem }
-  elsif obj.is_a? Hash
-    new = {}
-    obj.each do |k,v|
-      new[k] = texify_ampersands v
+  texify_str = Proc.new do |s|
+    s.gsub('&','\\\\&')
+    s.gsub(/(?<!\\)(?:\\{2})*\K&/) do |match|
+      "#{"\\"*4}&"
     end
-    return new
   end
+
+  apply_proc_over(texify_str, obj)
+end
+
+def texify_subscripts obj
+  texify_str = Proc.new do |s|
+    s.gsub(/(?<!\\)(?:\\{2})*_\K[^\s]*/) do |match|
+      "$_{#{match}}$"
+    end
+  end
+
+  apply_proc_over(texify_str, obj)
 end
 
 def render_to_tex(sourcefile, textemplate, texfile)
   json_str = File.read(sourcefile)
   json_obj = JSON.parse(json_str)
   json_obj = texify_ampersands(json_obj)
+  json_obj = texify_subscripts(json_obj)
+  json_obj = unescape_chars(json_obj)
 
   heading = json_obj['heading']
   ordered_sections = json_obj['ordered_sections']
