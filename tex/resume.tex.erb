@@ -87,57 +87,57 @@
 \vspace{0pt}
 <%  end -%>
 
-<%  items.each do |item| -%>
-<%      if twocolumn and item['is_columnbreak'] -%>
+<%  sections.each do |section| -%>
+<%      if twocolumn and section['is_columnbreak'] -%>
 \end{minipage}
 \hfill % Right hand side
 \begin{minipage}[t]{0.47\textwidth}
 \vspace{0pt}
 <%      else -%>
 
-    \resitem{<%= item['title'] %>}
+    \resitem{<%= section['title'] %>}
 
-<%          item['sub'].each do |subitem| -%>
+<%          section['sub'].each do |subsection| -%>
 
-<%              if subitem['style'] == 'flatheading' -%>
-        \rawressub{\textbf{<%= subitem['title'] %>}}
-<%              elsif subitem['style'] == 'experience' -%>
+<%              if subsection['style'] == 'flatheading' -%>
+        \rawressub{\textbf{<%= subsection['title'] %>}}
+<%              elsif subsection['style'] == 'experience' -%>
         \ressub
-          {<%= subitem['title'] %>}
-          {<%= subitem['role'] %>}
-          {<%= subitem['where'] %>}
-          {<%= subitem['when'] %>}
-<%              elsif subitem['style'] == 'degree' -%>
+          {<%= subsection['title'] %>}
+          {<%= subsection['role'] %>}
+          {<%= subsection['where'] %>}
+          {<%= subsection['when'] %>}
+<%              elsif subsection['style'] == 'degree' -%>
         \ressub
-          {<%= subitem['title'] %>}
-          {<%= subitem['description'] %>}
-          {\textup{<%= subitem['gpa'] %>}}
-          {<%= subitem['when'] %>}
-<%              elsif subitem['style'] == 'publication' -%>
+          {<%= subsection['title'] %>}
+          {<%= subsection['description'] %>}
+          {\textup{<%= subsection['gpa'] %>}}
+          {<%= subsection['when'] %>}
+<%              elsif subsection['style'] == 'publication' -%>
         \ressub
-          {<%= subitem['title'] %>}
-          {<%= subitem['where'] %>}
-          {<%= subitem['authors'].join(', ') %>}
-          {<%= subitem['pub_in'] %>}
+          {<%= subsection['title'] %>}
+          {<%= subsection['where'] %>}
+          {<%= subsection['authors'].join(', ') %>}
+          {<%= subsection['pub_in'] %>}
 <%              end -%>
 
-<%              if subitem['itemstyle'] == 'list' and subitem['items'] -%>
+<%              if subsection['itemstyle'] == 'list' and subsection['items'] -%>
         \begin{packed_itemize}
-<%                  subitem['items'].each do |bullet_point| -%>
+<%                  subsection['items'].each do |bullet_point| -%>
           \item <%= bullet_point %>
 <%                   end -%>
         \end{packed_itemize}
 <%              else -%>
       \begin{small}
-<%                  if subitem['itemstyle'] == 'courses' -%>
-        Notable Courses: <%= subitem['items'].join(', ') %>
-<%                  elsif subitem['itemstyle'] == 'two_col' -%>
-<%                      subitem['items'][0...-1].each do |twocol_item| -%>
+<%                  if subsection['itemstyle'] == 'courses' -%>
+        Notable Courses: <%= subsection['items'].join(', ') %>
+<%                  elsif subsection['itemstyle'] == 'two_col' -%>
+<%                      subsection['items'][0...-1].each do |twocol_item| -%>
         <%= twocol_item['col1'] %>\hfill<%= twocol_item['col2'] %>\\
 <%                      end -%>
-        <%= subitem['items'][-1]['col1'] %>\hfill<%= subitem['items'][-1]['col2'] %>
-<%                  elsif subitem['itemstyle'] == 'commasep' -%>
-        <%= subitem['items'].join("#{subitem['separator']} " || ', ') %>
+        <%= subsection['items'][-1]['col1'] %>\hfill<%= subsection['items'][-1]['col2'] %>
+<%                  elsif subsection['itemstyle'] == 'commasep' -%>
+        <%= subsection['items'].join("#{subsection['separator']} " || ', ') %>
 <%                  end -%>
       \vspace{0.5em}
       \end{small}

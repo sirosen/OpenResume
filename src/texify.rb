@@ -5,9 +5,8 @@ require_relative 'json_tools'
 
 def texify_ampersands obj
   texify_str = Proc.new do |s|
-    s.gsub('&','\\\\&')
     s.gsub(/(?<!\\)(?:\\{2})*\K&/) do |match|
-      "#{"\\"*4}&"
+      "#{"\\"*2}&"
     end
   end
 
@@ -36,43 +35,43 @@ def render_to_tex(sourcefile, textemplate, texfile)
 
   twocolumn = false
 
-  items = []
+  sections = []
   ordered_sections.each do |section_name|
     if section_name == '<columnbreak>'
       if not twocolumn
         twocolumn = true
-        items << {'is_columnbreak' => true}
+        sections << {'is_columnbreak' => true}
       end
 
       next
     end
 
-    section = json_obj['sections'][section_name]
-    ordered_subsections = section['ordered_sub']
-    item = {}
-    item['title'] = section['title']
-    item['sub'] = []
+    jsonsection = json_obj['sections'][section_name]
+    ordered_subsections = jsonsection['ordered_sub']
+    section = {}
+    section['title'] = jsonsection['title']
+    section['sub'] = []
 
     ordered_subsections.each do |sub_name|
-      sub_item = section['subsections'][sub_name]
-      if sub_item['itemstyle'].nil?
-        sub_item['itemstyle'] = 'list'
+      subsection = jsonsection['subsections'][sub_name]
+      if subsection['itemstyle'].nil?
+        subsection['itemstyle'] = 'list'
       end
 
-      if sub_item['itemstyle'] == 'two_col'
-        if sub_item['tex']
-          (sub_item['tex']['itemstyles'] rescue {}).each do |k, v|
-            sub_item['items'].each do |twocol_item|
+      if subsection['itemstyle'] == 'two_col'
+        if subsection['tex']
+          (subsection['tex']['itemstyles'] rescue {}).each do |k, v|
+            subsection['items'].each do |twocol_item|
               twocol_item[k] = "#{v['prefix']}#{twocol_item[k]}#{v['suffix']}"
             end
           end
         end
       end
 
-      item['sub'] << sub_item
+      section['sub'] << subsection
     end
 
-    items << item
+    sections << section
   end
 
   File.open(texfile, 'w') { |f|
