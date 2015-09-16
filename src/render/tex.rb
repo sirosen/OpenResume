@@ -1,7 +1,8 @@
 require 'json'
 require 'erb'
 
-require_relative 'json_tools'
+require_relative 'tools/json'
+require_relative 'tools/template_list'
 
 def texify_ampersands obj
   texify_str = Proc.new do |s|
@@ -23,7 +24,7 @@ def texify_subscripts obj
   apply_proc_over(texify_str, obj)
 end
 
-def render_to_tex(sourcefile, textemplate, texfile)
+def render_to_tex(sourcefile, texfile)
   json_str = File.read(sourcefile)
   json_obj = JSON.parse(json_str)
   json_obj = texify_ampersands(json_obj)
@@ -74,7 +75,8 @@ def render_to_tex(sourcefile, textemplate, texfile)
     sections << section
   end
 
+  tex_template = get_template('tex')
   File.open(texfile, 'w') { |f|
-    f.write(ERB.new(File.read(textemplate), 0, '-<>').result(binding))
+    f.write(ERB.new(File.read(tex_template), 0, '-<>').result(binding))
   }
 end

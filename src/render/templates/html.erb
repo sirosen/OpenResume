@@ -1,0 +1,52 @@
+<div class="resume-header">
+    <div class="name"><%= heading['name'] %></div>
+    <div class="email"><%= heading['email'] %></div>
+</div>
+
+<div class="resume-body">
+<%  sections.each do |section| -%>
+    <div class="resume-section">
+
+    <h1 class="section-title"><%= section['title'] %></h1>
+
+<%      section['sub'].each do |subsection| -%>
+        <div class="resume-<%=subsection['style']%>-subsection">
+
+            <h2 class="subsection-title"><%= subsection['title'] %></h2>
+<%          if subsection['style'] == 'experience' -%>
+            <h3 class="role"><%= subsection['role'] %></h2>
+            <h3 class="where"><%= subsection['where'] %></h2>
+            <h3 class="when"><%= subsection['when'] %></h2>
+<%          elsif subsection['style'] == 'degree' -%>
+            <h3 class="description"><%= subsection['description'] %></h2>
+            <div class="detail"><%= subsection['when'] %>, <%= subsection['gpa'] %></div>
+<%          elsif subsection['style'] == 'publication' -%>
+            <h3 class="where"><%= subsection['where'] %></h2>
+            <h3 class="authors"><%= subsection['authors'].join(', ') %></h2>
+            <h3 class="pub-in"><%= subsection['pub_in'] %></h2>
+<%          end -%>
+
+            <div class="resume-items">
+<%          if subsection['itemstyle'] == 'list' and subsection['items'] -%>
+                <ul>
+<%              subsection['items'].each do |bullet_point| -%>
+                    <li><%= bullet_point %></li>
+<%              end -%>
+                </ul>
+<%          elsif subsection['itemstyle'] == 'courses' -%>
+                <p>Notable Courses: <%= subsection['items'].join(', ') %></p>
+<%          elsif subsection['itemstyle'] == 'two_col' -%>
+<%              subsection['items'].each do |twocol_item| -%>
+                <div class="leftcol"><%= twocol_item['col1'] %></div>
+                <div class="rightcol"><%= twocol_item['col2'] %></div>
+<%              end -%>
+<%          elsif subsection['itemstyle'] == 'commasep' -%>
+                <p><%= subsection['items'].join("#{subsection['separator']} " || ', ') %></p>
+<%          end -%>
+            </div>
+
+        </div>
+<%      end -%>
+    </div>
+<%  end -%>
+</div>

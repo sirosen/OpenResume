@@ -7,28 +7,23 @@ def ostruct_memberset ostruct
 end
 
 class ResumeBuilderOptparser
-  @required_args = Set.new [:source, :tex, :textemplate, :pdf, :png]
+  @required_args = Set.new [:source, :tex, :html, :pdf, :png]
 
   def self.gen_parser(option_struct)
     parser = OptionParser.new do |opts|
-      opts.on("-s", "--source SOURCE_JSON",
-              "Resume source doc.") do |source|
+      opts.on("-s", "--source SOURCE_JSON") do |source|
         option_struct.source = source
       end
-      opts.on("--tex TEX_TARGET",
-              "Resume tex target filename.") do |tex|
+      opts.on("--tex TEX_TARGET") do |tex|
         option_struct.tex = tex
       end
-      opts.on("--tex-template TEX_TEMPLATE",
-              "Resume tex ERB template.") do |textemplate|
-        option_struct.textemplate = textemplate
+      opts.on("--html HTML_TARGET") do |html|
+        option_struct.html = html
       end
-      opts.on("--pdf PDF_TARGET",
-              "Resume PDF target filename.") do |pdf|
+      opts.on("--pdf PDF_TARGET") do |pdf|
         option_struct.pdf = pdf
       end
-      opts.on("--png PNG_TARGET",
-              "Resume PNG target filename.") do |png|
+      opts.on("--png PNG_TARGET") do |png|
         option_struct.png = png
       end
     end
