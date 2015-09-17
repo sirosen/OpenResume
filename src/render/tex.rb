@@ -1,7 +1,5 @@
-require 'json'
-require 'erb'
-
 require_relative 'common'
+
 
 def texify_ampersands obj
   texify_str = Proc.new do |s|
@@ -23,9 +21,9 @@ def texify_subscripts obj
   proc_over_json(texify_str, obj)
 end
 
+
 def render_to_tex(sourcefile, texfile)
-  json_str = File.read(sourcefile)
-  json_obj = JSON.parse(json_str)
+  json_obj = filename_to_json(sourcefile)
   json_obj = texify_ampersands json_obj
   json_obj = texify_subscripts json_obj
   json_obj = unescape_chars json_obj
@@ -47,31 +45,24 @@ def render_to_tex(sourcefile, texfile)
 
     section = {}
     section['title'] = jsonsection['title']
-    section['sub'] = []
 
-    ordered_subsections(jsonsection).each do |subsection|
-      if subsection['itemstyle'].nil?
-        subsection['itemstyle'] = 'list'
-      end
-
-      if subsection['itemstyle'] == 'twocol'
-        if subsection['tex']
-          (subsection['tex']['itemstyles'] rescue {}).each do |k, v|
-            subsection['items'].each do |twocol_item|
-              twocol_item[k] = "#{v['prefix']}#{twocol_item[k]}#{v['suffix']}"
-            end
+    modify_twocol_item = Proc.new do |subsection|
+      if subsection['itemstyle'] == 'twocol' and subsection['tex']
+        (subsection['tex']['itemstyles'] rescue {}).each do |k, v|
+          subsection['items'].each do |twocol_item|
+            twocol_item[k] = "#{v['prefix']}#{twocol_item[k]}#{v['suffix']}"
           end
         end
       end
 
-      section['sub'] << subsection
+      return subsection
     end
+
+    section['sub'] = process_subsections(jsonsection,
+                                         func: modify_twocol_item)
 
     sections << section
   end
 
-  tex_template = get_template('tex')
-  File.open(texfile, 'w') { |f|
-    f.write(ERB.new(File.read(tex_template), 0, '-<>').result(binding))
-  }
+  render_template(get_template('tex'), texfile, binding)
 end

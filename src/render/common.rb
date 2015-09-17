@@ -1,3 +1,17 @@
+require 'erb'
+require 'json'
+
+def filename_to_json(filename)
+  json_str = File.read(filename)
+  return JSON.parse(json_str)
+end
+
+def render_template(templatename, destination, binding)
+  File.open(destination, 'w') { |f|
+    f.write(ERB.new(File.read(templatename), 0, '-<>').result(binding))
+  }
+end
+
 def proc_over_json(func, obj)
   if obj.is_a? String
     return func.call(obj)
@@ -40,12 +54,27 @@ def ordered_sections(obj)
 
   ordered_sections = obj['ordered_sections']
 
-  ret = ordered_sections.collect { |s| get_section(obj, s) }
-  return ret
+  return ordered_sections.collect { |s| get_section(obj, s) }
 end
 
 def ordered_subsections(section)
   ordered_subsections = section['ordered_sub']
-  ret = ordered_subsections.collect { |s| section['subsections'][s] }
-  return ret
+  return ordered_subsections.collect { |s| section['subsections'][s] }
+end
+
+def process_subsections(section, func: nil)
+  subs = []
+  ordered_subsections(section).each do |sub|
+    if sub['itemstyle'].nil?
+      sub['itemstyle'] = 'list'
+    end
+
+    if func
+      sub = func.call(sub)
+    end
+
+    subs << sub
+  end
+
+  return subs
 end
