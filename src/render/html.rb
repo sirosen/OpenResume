@@ -1,31 +1,36 @@
 require 'json'
 require 'erb'
+require 'cgi'
 
-require_relative 'tools/json'
-require_relative 'tools/template_list'
+require_relative 'common'
+
+def escape_htmlchars obj
+  escape_html = Proc.new do |s|
+    CGI.escapeHTML(s)
+  end
+
+  proc_over_json(escape_html, obj)
+end
 
 def render_to_html(sourcefile, htmlfile)
   json_str = File.read(sourcefile)
   json_obj = JSON.parse(json_str)
+  json_obj = escape_htmlchars(json_obj)
   json_obj = unescape_chars(json_obj)
 
   heading = json_obj['heading']
-  ordered_sections = json_obj['ordered_sections']
 
   sections = []
-  ordered_sections.each do |section_name|
-    if section_name == '<columnbreak>'
+  ordered_sections(json_obj).each do |jsonsection|
+    if jsonsection == :columnbreak
       next
     end
 
-    jsonsection = json_obj['sections'][section_name]
-    ordered_subsections = jsonsection['ordered_sub']
     section = {}
     section['title'] = jsonsection['title']
     section['sub'] = []
 
-    ordered_subsections.each do |sub_name|
-      subsection = jsonsection['subsections'][sub_name]
+    ordered_subsections(jsonsection).each do |subsection|
       if subsection['itemstyle'].nil?
         subsection['itemstyle'] = 'list'
       end

@@ -1,8 +1,7 @@
 require 'json'
 require 'erb'
 
-require_relative 'tools/json'
-require_relative 'tools/template_list'
+require_relative 'common'
 
 def texify_ampersands obj
   texify_str = Proc.new do |s|
@@ -11,7 +10,7 @@ def texify_ampersands obj
     end
   end
 
-  apply_proc_over(texify_str, obj)
+  proc_over_json(texify_str, obj)
 end
 
 def texify_subscripts obj
@@ -21,24 +20,23 @@ def texify_subscripts obj
     end
   end
 
-  apply_proc_over(texify_str, obj)
+  proc_over_json(texify_str, obj)
 end
 
 def render_to_tex(sourcefile, texfile)
   json_str = File.read(sourcefile)
   json_obj = JSON.parse(json_str)
-  json_obj = texify_ampersands(json_obj)
-  json_obj = texify_subscripts(json_obj)
-  json_obj = unescape_chars(json_obj)
+  json_obj = texify_ampersands json_obj
+  json_obj = texify_subscripts json_obj
+  json_obj = unescape_chars json_obj
 
   heading = json_obj['heading']
-  ordered_sections = json_obj['ordered_sections']
 
   twocolumn = false
 
   sections = []
-  ordered_sections.each do |section_name|
-    if section_name == '<columnbreak>'
+  ordered_sections(json_obj).each do |jsonsection|
+    if jsonsection == :columnbreak
       if not twocolumn
         twocolumn = true
         sections << {'is_columnbreak' => true}
@@ -47,14 +45,11 @@ def render_to_tex(sourcefile, texfile)
       next
     end
 
-    jsonsection = json_obj['sections'][section_name]
-    ordered_subsections = jsonsection['ordered_sub']
     section = {}
     section['title'] = jsonsection['title']
     section['sub'] = []
 
-    ordered_subsections.each do |sub_name|
-      subsection = jsonsection['subsections'][sub_name]
+    ordered_subsections(jsonsection).each do |subsection|
       if subsection['itemstyle'].nil?
         subsection['itemstyle'] = 'list'
       end
