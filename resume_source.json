@@ -78,12 +78,12 @@
       "subsections": {
         "opensource": {
           "style": "flatheading",
-          "itemstyle": "two_col",
+          "itemstyle": "twocol",
           "title": "Open Source Work",
           "tex": {
             "itemstyles": {
               "col2": {
-                "prefix": "\\url{",
+                "prefix": "\\\\url{",
                 "suffix": "}"
               }
             }

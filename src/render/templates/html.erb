@@ -35,7 +35,7 @@
                 </ul>
 <%          elsif subsection['itemstyle'] == 'courses' -%>
                 <p>Notable Courses: <%= subsection['items'].join(', ') %></p>
-<%          elsif subsection['itemstyle'] == 'two_col' -%>
+<%          elsif subsection['itemstyle'] == 'twocol' -%>
 <%              subsection['items'].each do |twocol_item| -%>
                 <div class="leftcol"><%= twocol_item['col1'] %></div>
                 <div class="rightcol"><%= twocol_item['col2'] %></div>

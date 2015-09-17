@@ -131,7 +131,7 @@
       \begin{small}
 <%                  if subsection['itemstyle'] == 'courses' -%>
         Notable Courses: <%= subsection['items'].join(', ') %>
-<%                  elsif subsection['itemstyle'] == 'two_col' -%>
+<%                  elsif subsection['itemstyle'] == 'twocol' -%>
 <%                      subsection['items'][0...-1].each do |twocol_item| -%>
         <%= twocol_item['col1'] %>\hfill<%= twocol_item['col2'] %>\\
 <%                      end -%>

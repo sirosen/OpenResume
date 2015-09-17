@@ -54,7 +54,7 @@ def render_to_tex(sourcefile, texfile)
         subsection['itemstyle'] = 'list'
       end
 
-      if subsection['itemstyle'] == 'two_col'
+      if subsection['itemstyle'] == 'twocol'
         if subsection['tex']
           (subsection['tex']['itemstyles'] rescue {}).each do |k, v|
             subsection['items'].each do |twocol_item|
