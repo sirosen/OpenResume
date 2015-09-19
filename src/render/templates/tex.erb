@@ -137,7 +137,7 @@
 <%                      end -%>
         <%= subsection['items'][-1]['col1'] %>\hfill<%= subsection['items'][-1]['col2'] %>
 <%                  elsif subsection['itemstyle'] == 'commasep' -%>
-        <%= subsection['items'].join("#{subsection['separator']} " || ', ') %>
+        <%= subsection['items'].join(subsection['separator']) %>
 <%                  end -%>
       \vspace{0.5em}
       \end{small}

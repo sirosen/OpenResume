@@ -69,6 +69,10 @@ def process_subsections(section, func: nil)
       sub['itemstyle'] = 'list'
     end
 
+    if sub['itemstyle'] == 'commasep'
+      sub['separator'] = "#{sub['separator'] || ','} "
+    end
+
     if func
       sub = func.call(sub)
     end

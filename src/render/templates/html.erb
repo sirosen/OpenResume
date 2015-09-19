@@ -41,7 +41,7 @@
                 <div class="rightcol"><%= twocol_item['col2'] %></div>
 <%              end -%>
 <%          elsif subsection['itemstyle'] == 'commasep' -%>
-                <p><%= subsection['items'].join("#{subsection['separator']} " || ', ') %></p>
+                <p><%= subsection['items'].join(subsection['separator']) %></p>
 <%          end -%>
             </div>
 

@@ -55,7 +55,7 @@ def render_to_tex(sourcefile, texfile)
         end
       end
 
-      return subsection
+      next subsection
     end
 
     section['sub'] = process_subsections(jsonsection,

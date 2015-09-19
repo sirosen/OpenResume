@@ -1,0 +1,232 @@
+%-----------------------%
+% Resume                %
+% Author: Stephen Rosen %
+%-----------------------%
+
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym,amssymb}
+\usepackage{xcolor,enumitem}
+\usepackage[hidelinks]{hyperref}
+
+%-----------------------
+\pagestyle{empty}
+\usepackage[margin=0.5in]{geometry}
+
+\raggedright
+\lefthyphenmin=10
+%-----------------------
+
+%-----------------------
+
+%Command definitions
+
+\newenvironment{packed_itemize}{
+    \begin{small}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    \begin{itemize}[label=$\circ$]
+}{
+    \end{itemize}
+    \end{small}
+}
+
+
+\definecolor{bg}{rgb}{.9,.9,1}
+\definecolor{border}{rgb}{.7,.7,1}
+\newcommand{\resitem}[1]{
+    \large{
+    \fcolorbox{border}{bg}{
+        \parbox{\textwidth}{
+        \textbf{#1 \vphantom{p\^{E}}}
+        }
+    }
+    }
+}
+
+\definecolor{subbg}{gray}{.95}
+\newcommand{\ressub}[4]{
+\begin{small}
+    \fcolorbox{subbg}{subbg}{
+        \parbox{\textwidth}{
+            \textbf{#1}\\
+            #2\\
+            \textit{#3}\\
+            #4
+        }
+    }
+\end{small}
+\vspace{-0.4em}
+}
+
+\newcommand{\rawressub}[1]{
+\begin{small}
+    \fcolorbox{subbg}{subbg}{
+        \parbox{\textwidth}{
+            #1
+        }
+    }
+\end{small}
+\vspace{-0.4em}
+}
+
+\newcommand{\reshead}[3]{
+    \textbf{\Large #1} \hfill \url{#2} \hfill #3\\
+    \vspace{1em}
+}
+
+%-----------------------
+
+\begin{document}
+
+\reshead{Stephen Rosen}{http://sirosen.net}{sirosen@uchicago.edu}
+
+% Left side
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+
+
+    \resitem{Work Experience}
+
+
+        \ressub
+          {Globus}
+          {SaaS Backend Engineer}
+          {Computation Institute, University of Chicago; Argonne National Lab}
+          {July 2013 -- Present}
+
+        \begin{packed_itemize}
+          \item Developed Chef cookbooks, bash scripts, and python scripts to maintain Globus servers
+          \item Managed the deployment of code from multiple teams onto QA and production servers, including Build and Release Engineering and Workflow Automation
+        \end{packed_itemize}
+
+
+        \ressub
+          {Manticore Project}
+          {Contributor}
+          {John Reppy, University of Chicago}
+          {June 2011 -- June 2013}
+
+        \begin{packed_itemize}
+          \item Adapted thread scheduling to prioritize non-IO bound computations
+          \item Developed a target for full or partial flattening on arbitrarily nested arrays and tuples as a Nested Flat Array
+        \end{packed_itemize}
+
+
+        \ressub
+          {Computer Science Instructional Laboratories}
+          {System Administrator}
+          {University of Chicago}
+          {May 2010 -- June 2013}
+
+        \begin{packed_itemize}
+          \item Administered Mac OS X servers, Ubuntu servers, VMWare ESXi servers, and Mac OS X workstations
+          \item Modified and used tools including radmind, Nagios, Fabric, Parallels, and VMWare
+          \item Designed and implemented a centralized administration and configuration managment service
+        \end{packed_itemize}
+
+
+        \ressub
+          {Computer Science Department}
+          {TA, Grader}
+          {University of Chicago}
+          {January 2012 -- June 2013}
+
+        \begin{packed_itemize}
+          \item Networks and Distributed Systems (Winter 2012, Spring 2013), Computer Science with Applications I (Autumn 2012), Honors Introduction to Computer Science II (Winter 2013)
+        \end{packed_itemize}
+
+
+
+\end{minipage}
+\hfill % Right hand side
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+
+
+    \resitem{Skills \& Experience}
+
+
+        \rawressub{\textbf{Open Source Work}}
+
+      \begin{small}
+        SALVE\hfill\url{salve.sirosen.net}\\
+        Manticore\hfill\url{manticore.cs.uchicago.edu}
+      \vspace{0.5em}
+      \end{small}
+
+
+        \rawressub{\textbf{Programming \& Scripting Languages \& Formats}}
+
+      \begin{small}
+        Python, C, SML, Bash, SQL, Ruby, Java, awk, (GNU) make, ooc, JavaScript (\& jQuery), flex/bison, AppleScript, x86 Assembly, C++, LISP, Haskell, Go, R, Lua, PHP, XSLT, JSON, XML, mustache, ERB, CSS, Liquid, jinja
+      \vspace{0.5em}
+      \end{small}
+
+
+        \rawressub{\textbf{Tools \& Software}}
+
+      \begin{small}
+        nginx, Chef, Jenkins, Travis CI, nagios, OSSEC, Vagrant, JIRA, Sentry (getsentry.com), Elasticsearch, Postgres, rsyslog
+      \vspace{0.5em}
+      \end{small}
+
+
+        \rawressub{\textbf{Platforms \& Operating Systems}}
+
+      \begin{small}
+        AWS, Mac OS X, Ubuntu, Debian, CentOS, RedHat, VMWare (ESXi), SUSE, ArchLinux
+      \vspace{0.5em}
+      \end{small}
+
+
+
+
+    \resitem{Education}
+
+
+        \ressub
+          {University of Chicago}
+          {BS in Computer Science and BS in Mathematics}
+          {\textup{GPA 3.5}}
+          {June 2013}
+
+      \begin{small}
+        Notable Courses: Topics in Operating Systems, Advanced Distributed Systems, Formal Languages, Algebraic Number Theory
+      \vspace{0.5em}
+      \end{small}
+
+
+
+
+    \resitem{Publications}
+
+
+        \ressub
+          {Data-Only Flattening for Nested Data Parallelism}
+          {Manticore Project, University of Chicago}
+          {L. Bergstrom, J. Reppy, S. Rosen, A. Shaw, M. Rainey, M. Fluet}
+          {PPoPP 2013}
+
+        \begin{packed_itemize}
+          \item Generalized parallel segmented sums into segmented reductions, optimized segmented reduce
+        \end{packed_itemize}
+
+
+        \ressub
+          {Status Report: The Manticore Project (2012)}
+          {Manticore Project, University of Chicago}
+          {C. Berger, L. Bergstrom, J. Reppy, S. Rosen, N. Sandler, A. Shaw, M. Rainey, M. Fluet}
+          {}
+
+      \begin{small}
+      \vspace{0.5em}
+      \end{small}
+
+
+
+
+\end{minipage}
+
+
+\end{document}
