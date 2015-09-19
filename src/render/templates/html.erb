@@ -1,30 +1,45 @@
-<div class="resume-header">
-    <div class="name"><%= heading['name'] %></div>
-    <div class="email"><%= heading['email'] %></div>
+<div class="resume-header row">
+    <div class="name col-sm-8"><%= heading['name'] %></div>
+    <div class="email col-sm-4"><%= heading['email'] %></div>
 </div>
 
 <div class="resume-body">
 <%  sections.each do |section| -%>
     <div class="resume-section">
 
-    <h1 class="section-title"><%= section['title'] %></h1>
+        <h1 class="section-title" class="center-block"><%= section['title'] %></h1>
 
 <%      section['sub'].each do |subsection| -%>
         <div class="resume-<%=subsection['style']%>-subsection">
 
-            <h2 class="subsection-title"><%= subsection['title'] %></h2>
+            <div class="subsection-header">
 <%          if subsection['style'] == 'experience' -%>
-            <h3 class="role"><%= subsection['role'] %></h2>
-            <h3 class="where"><%= subsection['where'] %></h2>
-            <h3 class="when"><%= subsection['when'] %></h2>
+                <div class="row">
+                    <div class="subsection-title col-sm-4"><%= subsection['title'] %></div>
+                    <div class="role col-sm-4 col-sm-offset-4"><%= subsection['role'] %></div>
+                </div>
+                <div class="row">
+                    <div class="where col-sm-8"><%= subsection['where'] %></div>
+                    <div class="when col-sm-4"><%= subsection['when'] %></div>
+                </div>
 <%          elsif subsection['style'] == 'degree' -%>
-            <h3 class="description"><%= subsection['description'] %></h2>
-            <div class="detail"><%= subsection['when'] %>, <%= subsection['gpa'] %></div>
+                <div class="subsection-title center-block"><%= subsection['title'] %></div>
+                <div class="row">
+                    <div class="description col-sm-8"><%= subsection['description'] %></div>
+                    <div class="detail col-sm-4"><%= subsection['when'] %>, <%= subsection['gpa'] %></div>
 <%          elsif subsection['style'] == 'publication' -%>
-            <h3 class="where"><%= subsection['where'] %></h2>
-            <h3 class="authors"><%= subsection['authors'].join(', ') %></h2>
-            <h3 class="pub-in"><%= subsection['pub_in'] %></h2>
+                <div class="subsection-title center-block"><%= subsection['title'] %></div>
+                <div class="row">
+                    <div class="where col-sm-8"><%= subsection['where'] %></div>
+<%              if subsection['pub_in'] -%>
+                    <div class="pub-in col-sm-4">Published In: <%= subsection['pub_in'] %></div>
+<%              end -%>
+                </div>
+                <div class="authors">Authors: <%= subsection['authors'].join(', ') %></div>
+<%          else -%>
+                <div class="subsection-title center-block"><%= subsection['title'] %></div>
 <%          end -%>
+            </div>
 
             <div class="resume-items">
 <%          if subsection['itemstyle'] == 'list' and subsection['items'] -%>
@@ -37,8 +52,10 @@
                 <p>Notable Courses: <%= subsection['items'].join(', ') %></p>
 <%          elsif subsection['itemstyle'] == 'twocol' -%>
 <%              subsection['items'].each do |twocol_item| -%>
-                <div class="leftcol"><%= twocol_item['col1'] %></div>
-                <div class="rightcol"><%= twocol_item['col2'] %></div>
+                <div class="row">
+                    <div class="col-sm-2"><%= twocol_item['col1'] %></div>
+                    <div class="col-sm-2"><%= twocol_item['col2'] %></div>
+                </div>
 <%              end -%>
 <%          elsif subsection['itemstyle'] == 'commasep' -%>
                 <p><%= subsection['items'].join(subsection['separator']) %></p>
