@@ -7,7 +7,7 @@ What is it?
 ---
 
 This project contains templating tools to help me maintain my resume, and
-(hopefully) to help others manager their resumes or CVs.
+(hopefully) to help others manage their resumes or CVs.
 
 The basic idea is that if resume content is kept in a format like JSON or XML,
 then it can be rendered to multiple presentation formats.
