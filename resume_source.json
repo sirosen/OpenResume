@@ -38,8 +38,7 @@
           "when": "May 2010 -- June 2013",
           "items": [
             "Administered Mac OS X servers, Ubuntu servers, VMWare ESXi servers, and Mac OS X workstations",
-            "Modified and used tools including radmind, Nagios, Fabric, Parallels, and VMWare",
-            "Designed and implemented a centralized administration and configuration managment service"
+            "Implemented a new configuration managment service using Fabric"
           ]
         },
         {
@@ -61,7 +60,7 @@
         {
           "style": "flatheading",
           "itemstyle": "twocol",
-          "title": "Open Source Work",
+          "title": "Selected Open Source Work",
           "tex": {
             "itemstyles": {
               "col2": {
@@ -72,20 +71,24 @@
           },
           "items": [
             {
-              "col1": "Contributions to...",
-              "col2": "click.palletsprojects.com , webargs.readthedocs.io , and more!"
-            },
-            {
-              "col1": "nose2",
-              "col2": "nose2.io"
-            },
-            {
               "col1": "Globus SDK",
               "col2": "globus-sdk-python.readthedocs.io"
             },
             {
               "col1": "Globus CLI",
               "col2": "github.com/globus/globus-cli"
+            },
+            {
+              "col1": "nose2",
+              "col2": "nose2.io"
+            },
+            {
+              "col1": "click",
+              "col2": "click.palletsprojects.com"
+            },
+            {
+              "col1": "webargs",
+              "col2": "webargs.readthedocs.io"
             }
           ]
         },
@@ -145,10 +148,7 @@
             "M. Fluet"
           ],
           "pub_in": "PPoPP 2013",
-          "when": "June 2013",
-          "items": [
-            "Generalized parallel segmented sums into segmented reductions, optimized segmented reduce"
-          ]
+          "when": "June 2013"
         },
         {
           "style": "publication",
