@@ -54,8 +54,8 @@
 <%          elsif subsection['itemstyle'] == 'twocol' -%>
 <%              subsection['items'].each do |twocol_item| -%>
                 <div class="row">
-                    <div class="col-sm-2"><%= twocol_item['col1'] %></div>
-                    <div class="col-sm-2"><%= twocol_item['col2'] %></div>
+                    <div class="col-sm-4"><%= twocol_item['col1'] %></div>
+                    <div class="col-sm-offset-4"><%= twocol_item['col2'] %></div>
                 </div>
 <%              end -%>
 <%          elsif subsection['itemstyle'] == 'commasep' -%>
