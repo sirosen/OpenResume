@@ -17,10 +17,10 @@ def render_to_html(sourcefile, htmlfile)
   json_obj = unescape_chars(json_obj)
 
   heading = json_obj['heading']
-
   sections = []
-  ordered_sections(json_obj).each do |jsonsection|
-    if jsonsection == :columnbreak
+
+  json_obj["sections"].each do |jsonsection|
+    if jsonsection == "COLUMNBREAK"
       next
     end
 

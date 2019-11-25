@@ -1,38 +1,25 @@
 {
   "heading": {
     "name": "Stephen Rosen",
-    "web": "http://sirosen.net",
-    "email": "sirosen@uchicago.edu"
+    "web": "https://sirosen.net",
+    "email": "sirosen@globus.org"
   },
-  "ordered_sections": [
-    "workexp",
-    "COLUMNBREAK",
-    "skills",
-    "edu",
-    "pub"
-  ],
-  "sections": {
-    "workexp": {
+  "sections": [
+    {
       "title": "Work Experience",
-      "ordered_sub": [
-        "globus",
-        "manticore",
-        "csil",
-        "ta"
-      ],
-      "subsections": {
-        "globus": {
+      "subsections": [
+        {
           "style": "experience",
           "title": "Globus",
           "role": "SaaS Backend Engineer",
-          "where": "Computation Institute, University of Chicago; Argonne National Lab",
+          "where": "University of Chicago",
           "when": "July 2013 -- Present",
           "items": [
-            "Developed Chef cookbooks, bash scripts, and python scripts to maintain Globus servers",
-            "Managed the deployment of code from multiple teams onto QA and production servers, including Build and Release Engineering and Workflow Automation"
+            "Maintained 24x7 production SaaS services on AWS as a member of operations team",
+            "Develop software for several projects, including the open source Globus SDK and CLI"
           ]
         },
-        "manticore": {
+        {
           "style": "experience",
           "title": "Manticore Project",
           "role": "Contributor",
@@ -40,10 +27,10 @@
           "when": "June 2011 -- June 2013",
           "items": [
             "Adapted thread scheduling to prioritize non-IO bound computations",
-            "Developed a target for full or partial flattening on arbitrarily nested arrays and tuples as a Nested Flat Array"
+            "Worked on full or partial flattening on arbitrarily nested arrays and tuples"
           ]
         },
-        "csil": {
+        {
           "style": "experience",
           "title": "Computer Science Instructional Laboratories",
           "role": "System Administrator",
@@ -55,7 +42,7 @@
             "Designed and implemented a centralized administration and configuration managment service"
           ]
         },
-        "ta": {
+        {
           "style": "experience",
           "title": "Computer Science Department",
           "role": "TA, Grader",
@@ -65,18 +52,13 @@
             "Networks and Distributed Systems (Winter 2012, Spring 2013), Computer Science with Applications I (Autumn 2012), Honors Introduction to Computer Science II (Winter 2013)"
           ]
         }
-      }
+      ]
     },
-    "skills": {
+    "COLUMNBREAK",
+    {
       "title": "Skills & Experience",
-      "ordered_sub": [
-        "opensource",
-        "lang",
-        "tools",
-        "os"
-      ],
-      "subsections": {
-        "opensource": {
+      "subsections": [
+        {
           "style": "flatheading",
           "itemstyle": "twocol",
           "title": "Open Source Work",
@@ -90,56 +72,48 @@
           },
           "items": [
             {
-              "col1": "SALVE",
-              "col2": "salve.sirosen.net"
+              "col1": "Contributions to...",
+              "col2": "click.palletsprojects.com , webargs.readthedocs.io , and more!"
             },
             {
-              "col1": "Manticore",
-              "col2": "manticore.cs.uchicago.edu"
+              "col1": "nose2",
+              "col2": "nose2.io"
+            },
+            {
+              "col1": "Globus SDK",
+              "col2": "globus-sdk-python.readthedocs.io"
+            },
+            {
+              "col1": "Globus CLI",
+              "col2": "github.com/globus/globus-cli"
             }
           ]
         },
-        "lang": {
+        {
           "style": "flatheading",
           "itemstyle": "commasep",
-          "title": "Programming & Scripting Languages & Formats",
+          "title": "Programming & Scripting Languages",
           "items": [
-            "Python", "C", "SML", "Bash", "SQL", "Ruby", "Java",
-            "awk", "(GNU) make", "ooc", "JavaScript (& jQuery)",
-            "flex/bison", "AppleScript", "x86 Assembly", "C++",
-            "LISP", "Haskell", "Go", "R", "Lua", "PHP", "XSLT",
-            "JSON", "XML", "mustache", "ERB", "CSS", "Liquid",
-            "jinja"
-          ]
-        },
-        "tools": {
-          "style": "flatheading",
-          "itemstyle": "commasep",
-          "title": "Tools & Software",
-          "items": [
-            "nginx", "Chef", "Jenkins", "Travis CI", "nagios",
-            "OSSEC", "Vagrant", "JIRA", "Sentry (getsentry.com)",
-            "Elasticsearch", "Postgres", "rsyslog"
-          ]
-        },
-        "os": {
-          "style": "flatheading",
-          "itemstyle": "commasep",
-          "title": "Platforms & Operating Systems",
-          "items": [
-            "AWS", "Mac OS X", "Ubuntu", "Debian", "CentOS",
-            "RedHat", "VMWare (ESXi)", "SUSE", "ArchLinux"
+            "Python",
+            "Bash",
+            "make",
+            "awk",
+            "SQL",
+            "Javascript",
+            "CSS",
+            "Ruby",
+            "C",
+            "SML",
+            "Java",
+            "and a smattering of many others"
           ]
         }
-      }
+      ]
     },
-    "edu": {
+    {
       "title": "Education",
-      "ordered_sub": [
-        "BS"
-      ],
-      "subsections": {
-        "BS": {
+      "subsections": [
+        {
           "style": "degree",
           "itemstyle": "courses",
           "title": "University of Chicago",
@@ -153,16 +127,12 @@
             "Algebraic Number Theory"
           ]
         }
-      }
+      ]
     },
-    "pub": {
+    {
       "title": "Publications",
-      "ordered_sub": [
-        "flatten",
-        "status"
-      ],
-      "subsections": {
-        "flatten": {
+      "subsections": [
+        {
           "style": "publication",
           "title": "Data-Only Flattening for Nested Data Parallelism",
           "where": "Manticore Project, University of Chicago",
@@ -180,7 +150,7 @@
             "Generalized parallel segmented sums into segmented reductions, optimized segmented reduce"
           ]
         },
-        "status": {
+        {
           "style": "publication",
           "title": "Status Report: The Manticore Project (2012)",
           "where": "Manticore Project, University of Chicago",
@@ -196,7 +166,7 @@
           ],
           "when": "June 2013"
         }
-      }
+      ]
     }
-  }
+  ]
 }

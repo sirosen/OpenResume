@@ -28,13 +28,13 @@ def render_to_tex(sourcefile, texfile)
   json_obj = texify_subscripts json_obj
   json_obj = unescape_chars json_obj
 
-  heading = json_obj['heading']
-
   twocolumn = false
 
+  heading = json_obj['heading']
   sections = []
-  ordered_sections(json_obj).each do |jsonsection|
-    if jsonsection == :columnbreak
+
+  json_obj["sections"].each do |jsonsection|
+    if jsonsection == "COLUMNBREAK"
       if not twocolumn
         twocolumn = true
         sections << {'is_columnbreak' => true}

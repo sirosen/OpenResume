@@ -37,34 +37,12 @@ def unescape_chars obj
 end
 
 def get_template(format)
-  render_dir = File.dirname(__FILE__)
-  template_dir = File.join(render_dir, 'templates')
-
-  return File.join(template_dir, "#{format}.erb")
-end
-
-def ordered_sections(obj)
-  def get_section(obj, name)
-    if name == 'COLUMNBREAK' then
-      return :columnbreak
-    else
-      return obj['sections'][name]
-    end
-  end
-
-  ordered_sections = obj['ordered_sections']
-
-  return ordered_sections.collect { |s| get_section(obj, s) }
-end
-
-def ordered_subsections(section)
-  ordered_subsections = section['ordered_sub']
-  return ordered_subsections.collect { |s| section['subsections'][s] }
+  return File.join(File.dirname(__FILE__), "templates", "#{format}.erb")
 end
 
 def process_subsections(section, func: nil)
   subs = []
-  ordered_subsections(section).each do |sub|
+  section["subsections"].each do |sub|
     if sub['itemstyle'].nil?
       sub['itemstyle'] = 'list'
     end
