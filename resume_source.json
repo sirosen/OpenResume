@@ -11,12 +11,12 @@
         {
           "style": "experience",
           "title": "Globus",
-          "role": "SaaS Backend Engineer",
+          "role": "Software Engineer",
           "where": "University of Chicago",
           "when": "July 2013 -- Present",
           "items": [
-            "Maintained 24x7 production SaaS services on AWS as a member of operations team",
-            "Develop software for several projects, including the open source Globus SDK and CLI"
+            "Maintain 24x7 production SaaS services on AWS",
+            "Develop software for several products, including the open source Globus SDK and CLI"
           ]
         },
         {
@@ -38,7 +38,7 @@
           "when": "May 2010 -- June 2013",
           "items": [
             "Administered Mac OS X servers, Ubuntu servers, VMWare ESXi servers, and Mac OS X workstations",
-            "Implemented a new configuration managment service using Fabric"
+            "Implemented a configuration managment service using Fabric"
           ]
         },
         {
@@ -102,13 +102,14 @@
             "make",
             "awk",
             "SQL",
+            "Rust",
             "Javascript",
             "CSS",
             "Ruby",
             "C",
             "SML",
             "Java",
-            "and a smattering of many others"
+            "and a smattering of others"
           ]
         }
       ]
